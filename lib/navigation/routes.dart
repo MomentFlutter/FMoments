@@ -3,16 +3,13 @@ import "package:flutter/material.dart";
 
 import "../presentation/home.dart";
 import "../presentation/login.dart";
+import "../presentation/moments.dart";
 
 part "routes.gr.dart";
 
 @MaterialAutoRouter(
   routes: <AutoRoute>[
-    AutoRoute(page: Login, path: "/login", initial: true),
-    AutoRoute(
-      page: Home,
-      path: "/home",
-    )
+    AutoRoute(page: Moments, path: "/moments", initial: true)
   ],
 )
 // extend the generated private router

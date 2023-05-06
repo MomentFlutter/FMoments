@@ -20,8 +20,8 @@ class _LoginApi implements LoginApi {
 
   @override
   Future<LoginResp> login(
-    login, [
-    cancelToken,
+    LoginReq login, [
+    CancelToken? cancelToken,
   ]) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

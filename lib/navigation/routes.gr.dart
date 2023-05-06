@@ -17,18 +17,12 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    LoginRoute.name: (routeData) {
+    MomentsRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: WrappedRoute(child: Login()),
+        child: const Moments(),
       );
-    },
-    HomeRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const Home(),
-      );
-    },
+    }
   };
 
   @override
@@ -36,40 +30,24 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           '/#redirect',
           path: '/',
-          redirectTo: '/login',
+          redirectTo: '/moments',
           fullMatch: true,
         ),
         RouteConfig(
-          LoginRoute.name,
-          path: '/login',
-        ),
-        RouteConfig(
-          HomeRoute.name,
-          path: '/home',
+          MomentsRoute.name,
+          path: '/moments',
         ),
       ];
 }
 
 /// generated route for
-/// [Login]
-class LoginRoute extends PageRouteInfo<void> {
-  const LoginRoute()
+/// [Moments]
+class MomentsRoute extends PageRouteInfo<void> {
+  const MomentsRoute()
       : super(
-          LoginRoute.name,
-          path: '/login',
+          MomentsRoute.name,
+          path: '/moments',
         );
 
-  static const String name = 'LoginRoute';
-}
-
-/// generated route for
-/// [Home]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute()
-      : super(
-          HomeRoute.name,
-          path: '/home',
-        );
-
-  static const String name = 'HomeRoute';
+  static const String name = 'MomentsRoute';
 }

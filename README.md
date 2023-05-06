@@ -4,6 +4,18 @@ This project target to finish a flutter application that looks like wechat momen
 Create from `Catalyst-UI-Flutter-Starter`
 More info about `Catalyst-UI-Flutter-Starter`,please see: [https://neo.thoughtworks.net/catalogue/developer-tools/TDtIrhAB8e/Catalyst-UI-Flutter-Starter](https://neo.thoughtworks.net/catalogue/developer-tools/TDtIrhAB8e/Catalyst-UI-Flutter-Starter)
 
+### Install
+1. run `make list-devices`
+2. choose device
+3. run `make app/<DEVICE>`
+
+
+
+### Melos
+- Regenerate build files: `Melos Run -> build runner`
+- Clean project: Melos Run -> `Clean Workspace`
+---
+## Catalyst's Wiki
 
 ## Table Of Contents
 

@@ -38,10 +38,10 @@ class Home extends StatelessWidget {
             alignment: Alignment.center,
             child: SecondaryElevatedButton.stretched(
               key: ValueKey("logout_button"),
-              onPress: () {
-                var navigator = AutoRouter.of(context);
-                navigator.push(LoginRoute());
-              },
+              // onPress: () {
+              //   var navigator = AutoRouter.of(context);
+              //   navigator.push(LoginRoute());
+              // },
               child: Text(getTranslated(context, "logout") as String),
             ),
           ),

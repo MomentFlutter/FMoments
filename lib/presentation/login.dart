@@ -47,12 +47,12 @@ class _LoginState extends State<Login> {
       var navigator = AutoRouter.of(context);
       context
           .read<LoginUserCubit>()
-          .loginUser(userIdController.text, passwordController.text)
-          .then(
-            (value) => navigator.push(
-              HomeRoute(),
-            ),
-          );
+          .loginUser(userIdController.text, passwordController.text);
+          // .then(
+            // (value) => navigator.push(
+            //   HomeRoute(),
+            // ),
+          // );
     }
   }
 
