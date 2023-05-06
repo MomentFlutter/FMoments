@@ -1,0 +1,15 @@
+{
+  "home": "domicile",
+  "login": "connexion",
+  "user_id": " identifiant d'utilisateur",
+  "password": "le mot de passe ",
+  "go_to_profile": "aller au profil",
+  "go_to_about": "aller à environ",
+  "go_to_user": "aller à l'utilisateur",
+  "profile": "profil",
+  "back_to home": " de retour à la maison",
+  "about": "sur",
+  "user": "utilisatrice",
+  "logout": "Se déconnecter"
+}
+

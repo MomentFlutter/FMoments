@@ -1,0 +1,12 @@
+# melos_managed_dependency_overrides: config,localization,network,storage,dls
+dependency_overrides:
+  config:
+    path: packages/config
+  dls:
+    path: packages/dls
+  localization:
+    path: packages/localization
+  network:
+    path: packages/network
+  storage:
+    path: packages/storage

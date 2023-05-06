@@ -1,0 +1,14 @@
+{
+  "home": "Home",
+  "login": "Login",
+  "user_id": "User ID",
+  "password": "Password",
+  "go_to_profile": "Go To Profile",
+  "go_to_about": "Go To About",
+  "go_to_user": "Go To User",
+  "profile": "Profile",
+  "back_to home": " Back To Home",
+  "about": "About ",
+  "user": "User",
+  "logout": "Logout"
+}

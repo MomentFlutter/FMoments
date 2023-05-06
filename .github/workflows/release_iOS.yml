@@ -1,0 +1,113 @@
+name: Release iOS
+
+on:
+  workflow_dispatch:
+    inputs:
+      bundle_short_version:
+        description: 'Release Version'
+        required: false
+      release_notes:
+        description: 'Release Notes'
+        required: false
+
+env:
+  KEYCHAIN_PASS: ${{ secrets.KEYCHAIN_PASS }}
+  MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+
+jobs:
+  static-checks:
+    uses: ./.github/workflows/ci.yml
+
+  release-ios:
+    runs-on: macos-12
+    needs: [static-checks]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Flutter action
+        uses: subosito/flutter-action@v2.7.0
+        with:
+          flutter-version: '3.7.11'
+          channel: 'stable'
+
+      - name: Setup melos
+        run: flutter pub global activate melos 2.9.0
+
+      - name: Install dependencies
+        run: make bootstrap
+
+      - name: Install ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.6'
+
+      - name: Select Xcode version
+        run: sudo xcode-select -s '/Applications/Xcode_13.4.app/Contents/Developer'
+
+      - name: Cache Pods
+        uses: actions/cache@v3
+        with:
+          path: |
+            ios/Pods
+            ~/Library/Caches/CocoaPods
+            ~/.cocoapods
+          key: cache-${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+
+      - name: Cache Gems
+        uses: actions/cache@v3
+        with:
+          path: |
+            vendor/bundle
+          key: cache-${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+
+      - name: Install Fastlane
+        run: |
+          cd ios
+          bundle config path vendor/bundle
+          bundle install
+          bundle update fastlane
+
+      - name: Setup SSH Keys for git access
+        run: |
+          echo ${{ secrets.SSH_PRIVATE_KEY_B64 }} > ssh_private_key.b64
+          base64 -d -i ssh_private_key.b64 > ios/ssh_private_key
+          chmod 600 ios/ssh_private_key
+
+      - name: Fetching certificate and profile
+        run: |
+          export MATCH_GIT_PRIVATE_KEY="./ssh_private_key"
+          cd ios
+          bundle exec fastlane certificates
+
+      - name: Build ipa
+        run: |
+          cd ios
+          pod install
+          bundle exec fastlane build
+        env:
+          BUNDLE_VERSION: ${GITHUB_RUN_NUMBER}
+          BUNDLE_SHORT_VERSION: ${{ github.event.inputs.bundle_short_version }}
+
+      - name: Release ios beta ipa to firebase
+        run: |
+          cd ios
+          bundle exec fastlane distribute
+        env:
+          FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
+          FIREBASE_APP_ID_IOS: ${{ secrets.FIREBASE_APP_ID_IOS }}
+          RELEASE_NOTES: ${{ github.event.inputs.release_notes }}
+
+        # TODO find upload artifact for ios
+      - name: Upload ipa, dSYM (debug symbol)
+        uses: actions/upload-artifact@v3
+        with:
+          path: |
+            ios/Runner.app.dSYM.zip
+            ios/Runner.ipa
+            ~/Library/Developer/Xcode/DerivedData/*/Build/Products/Release-iphonesimulator/catalystUiReactNativeStarter.app
+
+      - name: Delete Keychain
+        run: |
+          cd ios
+          bundle exec fastlane remove_keychain
