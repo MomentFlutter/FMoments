@@ -1,9 +1,7 @@
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 
-import "../presentation/home.dart";
-import "../presentation/login.dart";
-import "../presentation/moments.dart";
+import "../presentation/moments/moments.dart";
 
 part "routes.gr.dart";
 
