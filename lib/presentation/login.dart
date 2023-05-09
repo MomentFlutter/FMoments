@@ -9,7 +9,6 @@ import "package:provider/provider.dart";
 import "package:storage/storage_factory.dart";
 
 import "../cubit/login_user_cubit.dart";
-import "../navigation/routes.dart";
 import "../network/client.dart";
 import "../repository/login_repository.dart";
 import "../utilities/system_provider.dart";
@@ -44,7 +43,7 @@ class _LoginState extends State<Login> {
 
   void onLogin(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      var navigator = AutoRouter.of(context);
+      // var navigator = AutoRouter.of(context);
       context
           .read<LoginUserCubit>()
           .loginUser(userIdController.text, passwordController.text);

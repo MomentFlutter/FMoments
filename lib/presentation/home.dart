@@ -1,4 +1,3 @@
-import "package:auto_route/auto_route.dart";
 import "package:dls/widgets/change_language_widget.dart";
 import "package:dls/widgets/change_theme_button_widget.dart";
 import "package:dls/widgets/secondary_elevated_button.dart";
@@ -6,7 +5,6 @@ import "package:flutter/material.dart";
 import "package:localization/language_translate.dart";
 import "package:provider/provider.dart";
 
-import "../navigation/routes.dart";
 import "../utilities/system_provider.dart";
 
 class Home extends StatelessWidget {

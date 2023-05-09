@@ -20,7 +20,7 @@ class _$AppRouter extends RootStackRouter {
     MomentsRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const Moments(),
+        child: Moments(),
       );
     }
   };
