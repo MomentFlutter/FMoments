@@ -2,7 +2,7 @@
 
 file='.git/hooks/pre-commit'
 gitFolder='.git'
-if [ ! -f $gitFolder ]
+if [ ! -d $gitFolder ]
 then
     echo 'git not initialised'
 
@@ -24,7 +24,7 @@ then
     fi" >> $file
     echo "make run/format" >> $file
     echo "make run/test" >> $file
-
+#    chmod +x .git/hooks/pre-commit
     echo "Flutter analyze and format command added to hooks"
 else
     echo 'A pre-commit hook already exists. Ensure Talisman check, Flutter analyze, format and test command is also part of your pre-commit hook'

@@ -4,6 +4,9 @@ This project target to finish a flutter application that looks like wechat momen
 Create from `Catalyst-UI-Flutter-Starter`
 More info about `Catalyst-UI-Flutter-Starter`,please see: [https://neo.thoughtworks.net/catalogue/developer-tools/TDtIrhAB8e/Catalyst-UI-Flutter-Starter](https://neo.thoughtworks.net/catalogue/developer-tools/TDtIrhAB8e/Catalyst-UI-Flutter-Starter)
 
+### SetUp
+1. （Optional）Enable git pre-commit-hook, run `make precommit` under root of project
+
 ### Install
 1. run `make list-devices`
 2. choose device
