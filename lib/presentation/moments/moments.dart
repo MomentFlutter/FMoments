@@ -1,8 +1,11 @@
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
+import "package:network/endpoints/moments_api.dart";
 
 import "../../cubit/moments_cubit.dart";
 import "../../cubit/moments_state.dart";
+import "../../network/client.dart";
+import "../../repository/moments_repository.dart";
 
 class Moments extends StatefulWidget {
   @override
@@ -15,7 +18,9 @@ class _MomentsState extends State<Moments> {
   @override
   void initState() {
     super.initState();
-    _momentsCubit = MomentsCubit();
+    MomentsRepository repository =
+        MomentsRepository(MomentsApi(DioClient().dio));
+    _momentsCubit = MomentsCubit(repository);
     _momentsCubit.fetchUserInfo();
     _momentsCubit.fetchMomentsData();
   }
