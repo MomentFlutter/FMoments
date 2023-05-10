@@ -10,6 +10,6 @@ class MomentsRepository {
 
   Future<UserInfo> fetchUserInfo() async {
     MomentUserInfoResp resp = await _momentsApi.fetchUserInfo();
-    return UserInfo(resp.profileBg,resp.avatar,resp.username,resp.nick);
+    return UserInfo(resp.profileBg, resp.avatar, resp.username, resp.nick);
   }
 }

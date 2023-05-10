@@ -1,4 +1,4 @@
-name: counter
+name: fmoments
 
 packages:
   - "**"

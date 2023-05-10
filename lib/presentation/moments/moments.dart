@@ -97,6 +97,7 @@ class _MomentsState extends State<Moments> {
       );
     } else {
       return ListView.builder(
+        key: ValueKey("moments_list"),
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             title: Text("Item $index"),
