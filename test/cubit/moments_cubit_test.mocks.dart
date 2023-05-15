@@ -8,6 +8,7 @@ import 'dart:async' as _i4;
 import 'package:FMoments/model/user_info_data.dart' as _i2;
 import 'package:FMoments/repository/moments_repository.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:network/model/tweet_resp.dart' as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -52,4 +53,12 @@ class MockMomentsRepository extends _i1.Mock implements _i3.MomentsRepository {
           ),
         )),
       ) as _i4.Future<_i2.UserInfo>);
+  @override
+  _i4.Future<List<_i5.Tweet>> fetchTweets() => (super.noSuchMethod(
+        Invocation.method(
+          #fetchTweets,
+          [],
+        ),
+        returnValue: _i4.Future<List<_i5.Tweet>>.value(<_i5.Tweet>[]),
+      ) as _i4.Future<List<_i5.Tweet>>);
 }

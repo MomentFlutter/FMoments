@@ -12,7 +12,7 @@ class MomentsStateInitial extends MomentsState {}
 class MomentsStateLoading extends MomentsState {}
 
 class MomentStateLoaded extends MomentsState {
-  late final UserInfo userInfo;
+  late final MomentsUiInfo momentsUiInfo;
 
-  MomentStateLoaded(this.userInfo);
+  MomentStateLoaded(this.momentsUiInfo);
 }

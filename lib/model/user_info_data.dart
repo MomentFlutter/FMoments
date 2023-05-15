@@ -1,3 +1,10 @@
+import "package:network/model/tweet_resp.dart";
+
+class MomentsUiInfo {
+  late UserInfo userInfo;
+  late List<Tweet>? tweets;
+}
+
 class UserInfo {
   String? profileBg;
   String? avatar;

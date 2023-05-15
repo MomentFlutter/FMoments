@@ -4,7 +4,6 @@ import "package:integration_test/integration_test.dart";
 
 import "../lib/main.dart" as app;
 
-
 class Initialize {
   static void main() {
     IntegrationTestWidgetsFlutterBinding.ensureInitialized().framePolicy =
